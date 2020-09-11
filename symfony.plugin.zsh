@@ -142,7 +142,7 @@ _symfony_get_commands() {
     [[ -z $1 ]] && return 1;
 
     $1 --no-ansi list | \
-        sed -nr \
+        sed -nE \
         -e '1,/Available commands/d' \
         -e 's/([[]|[]])/\\\1/g' \
         -e 's/:/\\\:/g' \
@@ -154,7 +154,7 @@ _symfony_get_options() {
     ([[ -z $1 ]] || [[ -z $2 ]]) && return 1;
 
     $1 --no-ansi $2 --help | \
-        sed -nr \
+        sed -nE \
         -e '1,/^Options/d' \
         -e '/^Help/,$d' \
         -e '/^.*--help.*$/,$d' \
@@ -165,7 +165,7 @@ _symfony_get_options() {
 }
 
 _symfony_get_items() {
-    $1 --no-ansi $2 | sed -nr 's/^  ?([a-z_][^[:space:]]+) .*$/\1/p';
+    $1 --no-ansi $2 | sed -nE 's/^  ?([a-z_][^[:space:]]+) .*$/\1/p';
 }
 
 _symfony_get_services() {
@@ -194,7 +194,7 @@ _symfony_get_config_keys() {
     local console=${1-$(_symfony_find_console)};
 
     if [[ $? -eq 0 ]]; then
-        "$console" debug:config |  sed -nr 's/^.*\| ([a-z_][^[:space:]]+) .*$/\1/p';
+        "$console" debug:config |  sed -nE 's/^.*\| ([a-z_][^[:space:]]+) .*$/\1/p';
         return 0;
     else
         return 1;
