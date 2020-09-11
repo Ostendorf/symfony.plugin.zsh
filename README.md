@@ -1,24 +1,36 @@
 # symfony.plugin.zsh
 
-A zsh plugin for the [Symfony 2/3](https://symfony.com/) with usefull commands and an actual autocompletion.
+Oh My ZSH plugin for [Symfony 2/3/4](https://symfony.com/) with usefull commands and autocompletion.
 
 ## Installation
 
-Antigen:
-
+Go to plugin directory
 ```sh
-antigen bundle voronkovich/symfony.plugin.zsh
+cd ~/.oh-my-zsh/custom/plugins
 ```
 
-Or clone this repo and add this into your .zshrc:
-
+Clone via SSH or HTTPS
 ```sh
-source path/to/cloned/repo/symfony.plugin.zsh
+# SSH
+git clone git@github.com:Ostendorf/symfony.plugin.zsh.git ostendorf-symfony
+
+# HTTPS
+git clone https://github.com/Ostendorf/symfony.plugin.zsh.git ostendorf-symfony
+```
+
+Open `~/.zshrc`
+```sh
+zshconfig
+```
+
+Add this at end of file:
+```sh
+source ~/.oh-my-zsh/custom/plugins/ostendorf-symfony/symfony.plugin.zsh
 ```
 
 ## Usage
 
-This plugin provides some usefull commands and shortcuts:
+This plugin provides some useful commands and shortcuts:
 
 - `sf` is used for running Symfony console commands. You can run this command inside project's folders because it searches the console script upward from a current dir;
 - `sfprod` and `sfdev` are shortcuts for `sf --env=prod` and `sf --env=dev`;
@@ -41,4 +53,4 @@ Also this plugin provides a commands and some options autocompletion for both Sy
 
 ## License
 
-Copyright (c) Voronkovich Oleg. Distributed under the MIT.
+Released under the [MIT license](LICENSE.txt)
